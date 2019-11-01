@@ -9,6 +9,9 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE'
 export const GET_TOOL_DATA_START = 'GET_TOOL_DATA_START'
 export const GET_TOOL_DATA_SUCCESS = 'GET_TOOL_DATA_SUCCESS'
 export const GET_TOOL_DATA_FAILURE = 'GET_TOOL_DATA_FAILURE'
+export const Post_TOOL_DATA_START = 'Post_TOOL_DATA_START'
+export const Post_TOOL_DATA_SUCCESS = 'Post_TOOL_DATA_SUCCESS'
+export const Post_TOOL_DATA_FAILURE = 'Post_TOOL_DATA_FAILURE'
 
 export const getInfo = () => {
     return dispatch => {
