@@ -19,7 +19,9 @@ export const login = values => {
         axios.post(`https://use-m-tools-be.herokuapp.com/auth/login`, values)
             .then(res => {
                 console.log("res", res.data)
-                localStorage.setItem("token", res.data.token)
+                localStorage.setItem('token', res.data.token)
+                localStorage.setItem('id', res.data.id)
+                localStorage.setItem('first_name', res.data.first_name)
                 dispatch({ type: LOGIN_SUCCESS, payload: res.data})
             })
             .catch(err => {

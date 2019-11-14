@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { login } from '../../actions/toolActions'
@@ -62,6 +62,20 @@ const useStyles = makeStyles(theme => ({
 
  const Login = (props) => {
   const classes = useStyles();
+  const [user, setUser] = useState({ username: '', password: ''})
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    return props.login(user)
+  }
+
+  const handleChange = e => {
+    e.preventDefault()
+    setUser({ ...user, [e.target.name]: e.target.value })
+    console.log('user on login', user)
+  }
+
+  
 
   return (
     <Grid container component="main" className={classes.root}>
@@ -75,16 +89,17 @@ const useStyles = makeStyles(theme => ({
           <Typography component="h1" variant="h5">
             Sign in
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate  onSubmit={handleSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
               required
               fullWidth
               id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              label="Username"
+              name="username"
+              value={user.username}
+              onChange={handleChange}
               autoFocus
             />
             <TextField
@@ -95,6 +110,8 @@ const useStyles = makeStyles(theme => ({
               name="password"
               label="Password"
               type="password"
+              value={user.password}
+              onChange={handleChange}
               id="password"
               autoComplete="current-password"
             />
