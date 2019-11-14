@@ -3,9 +3,12 @@ import {
     LOGIN_SUCCESS,
     LOGIN_FAILURE
 } from '../actions'
+import { stat } from 'fs';
 
 const initialState = {
+    loginData: [],
     tools: [],
+    btools: [],
     isLoading: false,
     error: ''
 }
@@ -22,7 +25,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                players: action.payload,
+                loginData: [...state.loginData, {value: action.payload }],
                 error: ''
             }
         default:

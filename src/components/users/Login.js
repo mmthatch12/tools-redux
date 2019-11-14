@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { login } from '../../actions/toolActions'
 
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -58,7 +59,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
- const Login = () => {
+ const Login = (props) => {
   const classes = useStyles();
 
   return (
@@ -135,4 +136,4 @@ const mapStateToProps = state => ({
   isLoading: false
 });
 
-export default withRouter(connect(mapStateToProps, {})(Login))
+export default withRouter(connect(mapStateToProps, { login })(Login))
