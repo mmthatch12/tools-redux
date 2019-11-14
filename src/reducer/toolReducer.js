@@ -1,7 +1,7 @@
 import {
-    GET_TOOL_DATA_START,
-    GET_TOOL_DATA_SUCCESS,
-    GET_TOOL_DATA_FAILURE
+    LOGIN_START,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE
 } from '../actions'
 
 const initialState = {
@@ -12,13 +12,13 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch(action.type) {
-        case GET_TOOL_DATA_START:
+        case LOGIN_START:
             return {
                 ...state,
                 isLoading: true,
                 error: ''
             };
-        case GET_TOOL_DATA_SUCCESS:
+        case LOGIN_SUCCESS:
             return {
                 ...state,
                 isLoading: false,

@@ -1,6 +1,6 @@
 export { 
-    getInfo,
-    GET_TOOL_DATA_START,
-    GET_TOOL_DATA_SUCCESS,
-    GET_TOOL_DATA_FAILURE
+    login,
+    LOGIN_START,
+    LOGIN_SUCCESS,
+    LOGIN_FAILURE
 } from './toolActions'
