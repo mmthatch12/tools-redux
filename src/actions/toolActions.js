@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getThemeProps } from '@material-ui/styles'
 
 export const REGISTER_START = 'REGISTER_START'
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
@@ -16,16 +17,18 @@ export const Post_TOOL_DATA_FAILURE = 'Post_TOOL_DATA_FAILURE'
 export const login = values => {
     return dispatch => {
         dispatch({ type: LOGIN_START })
-        axios.post(`https://use-m-tools-be.herokuapp.com/auth/login`, values)
-            .then(res => {
-                console.log("res", res.data)
-                localStorage.setItem('token', res.data.token)
-                localStorage.setItem('id', res.data.id)
-                localStorage.setItem('first_name', res.data.first_name)
-                dispatch({ type: LOGIN_SUCCESS, payload: res.data})
-            })
-            .catch(err => {
-                dispatch({ type: LOGIN_FAILURE, payload: err.response})
-            })
+        return axios
+            .post(`https://use-m-tools-be.herokuapp.com/auth/login`, values)
+                .then(res => {
+                    console.log("res", res.data)
+                    localStorage.setItem('token', res.data.token)
+                    localStorage.setItem('id', res.data.id)
+                    localStorage.setItem('first_name', res.data.first_name)
+                    dispatch({ type: LOGIN_SUCCESS, payload: res.data})
+                    return true;
+                })
+                .catch(err => {
+                    dispatch({ type: LOGIN_FAILURE, payload: err.response})
+                })
     }
 }

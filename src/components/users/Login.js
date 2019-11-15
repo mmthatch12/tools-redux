@@ -67,6 +67,14 @@ const useStyles = makeStyles(theme => ({
   const handleSubmit = e => {
     e.preventDefault()
     return props.login(user)
+    .then(res => {
+      if(res) {
+        props.history.push('/toollist')
+      }
+    })
+    .catch(err => {
+      console.log('login error', err)
+    })
   }
 
   const handleChange = e => {

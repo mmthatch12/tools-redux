@@ -9,9 +9,9 @@ import ToolList from './components/tools/ToolList'
 function App() {
   return (
     <>
-      <Route path='/' component={Login} />
+      <Route exact path='/' component={Login} />
       <Route path='/register' component={Register} />
-      <Route path='/main' component={ToolList} />
+      <Route exact path='/toollist' component={ToolList} />
     </>
   );
 }
