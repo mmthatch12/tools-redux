@@ -103,7 +103,7 @@ const useStyles = makeStyles(theme => ({
               margin="normal"
               required
               fullWidth
-              id="email"
+              id="username"
               label="Username"
               name="username"
               value={user.username}

@@ -23,7 +23,7 @@ function Copyright() {
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        yourtoolsmytools
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -100,7 +100,7 @@ const useStyles = makeStyles(theme => ({
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign up
           </Typography>
           <form className={classes.form} noValidate  onSubmit={handleSubmit}>
             <TextField
@@ -109,11 +109,23 @@ const useStyles = makeStyles(theme => ({
               required
               fullWidth
               id="email"
-              label="Username"
-              name="username"
-              value={user.username}
+              label="Email"
+              name="email"
+              value={user.email}
               onChange={handleChange}
               autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="username"
+              label="Username"
+              type="username"
+              value={user.username}
+              onChange={handleChange}
+              id="username"
             />
             <TextField
               variant="outlined"
@@ -126,11 +138,30 @@ const useStyles = makeStyles(theme => ({
               value={user.password}
               onChange={handleChange}
               id="password"
-              autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="first_name"
+              label="First name"
+              type="text"
+              value={user.first_name}
+              onChange={handleChange}
+              id="first_name"
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="last_name"
+              label="Last name"
+              type="text"
+              value={user.last_name}
+              onChange={handleChange}
+              id="last_name"
             />
             <Button
               type="submit"
@@ -139,17 +170,14 @@ const useStyles = makeStyles(theme => ({
               color="primary"
               className={classes.submit}
             >
-              Sign In
+              Sign up
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                <Link to='/'>
+                  {"Already have an account? Sign In"}
                 </Link>
               </Grid>
             </Grid>
