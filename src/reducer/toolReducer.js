@@ -1,7 +1,10 @@
 import {
     LOGIN_START,
     LOGIN_SUCCESS,
-    LOGIN_FAILURE
+    LOGIN_FAILURE,
+    REGISTER_START,
+    REGISTER_SUCCESS,
+    REGISTER_FAILURE
 } from '../actions'
 import { stat } from 'fs';
 
@@ -27,6 +30,18 @@ export const reducer = (state = initialState, action) => {
                 isLoading: false,
                 loginData: [...state.loginData, {value: action.payload }],
                 error: ''
+            };
+        case REGISTER_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            }
+        case REGISTER_SUCCESS: 
+            return {
+                ...state,
+                isLoading: false,
+                loginData: [...state.loginData, {value: action.payload}]
             }
         default:
             return state
