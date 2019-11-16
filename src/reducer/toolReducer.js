@@ -4,7 +4,10 @@ import {
     LOGIN_FAILURE,
     REGISTER_START,
     REGISTER_SUCCESS,
-    REGISTER_FAILURE
+    REGISTER_FAILURE,
+    GET_TOOL_DATA_START,
+    GET_TOOL_DATA_SUCCESS,
+    GET_TOOL_DATA_FAILURE
 } from '../actions'
 import { stat } from 'fs';
 
@@ -42,6 +45,18 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 loginData: [...state.loginData, {value: action.payload}]
+            }
+        case GET_TOOL_DATA_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            }
+        case GET_TOOL_DATA_SUCCESS:
+            return {
+                ...state,
+                isLoading: true,
+                tools: [...state.tools, {value: action.payload}]
             }
         default:
             return state
