@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getThemeProps } from '@material-ui/styles'
+import AxiosWithAuth from '../utils/AxiosWithAuth'
 
 export const REGISTER_START = 'REGISTER_START'
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS'
@@ -48,6 +48,22 @@ export const register = values => {
                 })
                 .catch(err => {
                     dispatch({ type: REGISTER_FAILURE, payload: err.response})
+                })
+    }
+}
+
+export const availableTools = () => {
+    return dispatch => {
+        dispatch({ type: GET_TOOL_DATA_START })
+        return AxiosWithAuth()    
+            .get(`https://use-m-tools-be.herokuapp.com/tools`)
+                .then(res => {
+                    console.log("res from availableTools action", res)
+                    dispatch({ type: GET_TOOL_DATA_SUCCESS, payload: res.data})
+                    return true;
+                })
+                .catch(err => {
+                    dispatch({ type: GET_TOOL_DATA_FAILURE, payload: err.response})
                 })
     }
 }
