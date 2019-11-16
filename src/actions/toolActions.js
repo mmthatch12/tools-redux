@@ -32,3 +32,22 @@ export const login = values => {
                 })
     }
 }
+
+export const register = values => {
+    return dispatch => {
+        dispatch({ type: REGISTER_START })
+        return axios    
+            .post(`https://use-m-tools-be.herokuapp.com/auth/register`, values)
+                .then(res => {
+                    console.log("res", res.data)
+                    localStorage.setItem('token', res.data.token)
+                    localStorage.setItem('id', res.data.id)
+                    localStorage.setItem('first_name', res.data.first_name)
+                    dispatch({ type: REGISTER_SUCCESS, payload: res.data})
+                    return true;
+                })
+                .catch(err => {
+                    dispatch({ type: REGISTER_FAILURE, payload: err.response})
+                })
+    }
+}
