@@ -1,9 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { availableTools } from '../../actions/toolActions'
+import { getThemeProps } from '@material-ui/styles';
 
-const ToolList = () => {
+const ToolList = (props) => {
+
+    useEffect(() => {
+        props.availableTools()
+    }, [])
+
     return (
-        <h1>From Toollist</h1>
+        <>
+            {props.tools.map(tool => <div>{tool.name}</div>)}
+        </>
+        
     )
 }
 
-export default ToolList
+const mapStateToProps = state => ({
+    isLoading: state.isLoading,
+    tools: state.tools
+  });
+  
+  export default withRouter(connect(mapStateToProps, { availableTools })(ToolList))
