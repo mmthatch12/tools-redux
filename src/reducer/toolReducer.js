@@ -55,7 +55,7 @@ export const reducer = (state = initialState, action) => {
         case GET_TOOL_DATA_SUCCESS:
             return {
                 ...state,
-                isLoading: true,
+                isLoading: false,
                 tools: [...state.tools, {value: action.payload}]
             }
         default:

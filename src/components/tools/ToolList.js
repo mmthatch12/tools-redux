@@ -1,18 +1,27 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { availableTools } from '../../actions/toolActions'
-import { getThemeProps } from '@material-ui/styles';
 
 const ToolList = (props) => {
+    const[test, setTest] = useState([])
 
-    useEffect(() => {
+    const handleClick = e => {
+        e.preventDefault()
         props.availableTools()
-    }, [])
+    }
+
+    // useEffect(() => {
+    //     props.availableTools()
+    // }, [])
+
+    console.log('***props from ToolList', props.tools[0])
 
     return (
         <>
-            {props.tools.map(tool => <div>{tool.name}</div>)}
+            <div>Not working yet?</div>
+            <button onClick={handleClick}>Work?</button>
+            {/* {props.tools[0].map(tool => <div>{tool.name}</div>)} */}
         </>
         
     )
