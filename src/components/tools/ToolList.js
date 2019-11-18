@@ -1,29 +1,97 @@
-import React, { useState, useEffect } from 'react'
+// import React, { useState, useEffect } from 'react'
+// import { withRouter } from "react-router-dom";
+// import { connect } from "react-redux";
+// import { availableTools } from '../../actions/toolActions'
+
+// const ToolList = (props) => {
+//     const[test, setTest] = useState([])
+
+//     useEffect(() => {
+//         props.availableTools()
+//     }, [])
+
+//     console.log('***props from ToolList', props.tools)
+
+//     return (
+//         <>
+//             <div>Not working yet?</div>
+//             {props.tools && props.tools.map(tool => tool.value.map((tooly, ind) => <div key={ind}>{tooly.name}</div>))}
+//         </>
+        
+//     )
+// }
+
+// const mapStateToProps = state => ({
+//     isLoading: state.isLoading,
+//     tools: state.tools
+//   });
+  
+//   export default withRouter(connect(mapStateToProps, { availableTools })(ToolList))
+
+import React, { useEffect } from 'react';
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { availableTools } from '../../actions/toolActions'
 
-const ToolList = (props) => {
-    const[test, setTest] = useState([])
+import { makeStyles } from '@material-ui/core/styles';
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
 
-    // const handleClick = e => {
-    //     e.preventDefault()
-    //     props.availableTools()
-    // }
+const useStyles = makeStyles({
+  card: {
+    maxWidth: 345,
+  },
+  media: {
+    height: 140,
+  },
+});
+
+const ToolList = (props) => {
+  const classes = useStyles();
 
     useEffect(() => {
         props.availableTools()
     }, [])
 
-    console.log('***props from ToolList', props.tools)
+  return (
+    <>
+        {props.tools && props.tools.map(tool => tool.value.map((tooly, ind) => (        
+            <Card className={classes.card} key={ind}>
+                <CardActionArea>
+                    <CardMedia
+                    className={classes.media}
+                    image="/static/images/cards/contemplative-reptile.jpg"
+                    title="Contemplative Reptile"
+                    />
+                    <CardContent>
+                    <Typography gutterBottom variant="h5" component="h2">
+                        {tooly.name}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        {tooly.owner_id}
+                    </Typography>
+                    </CardContent>
+                </CardActionArea>
+                <CardActions>
+                    <Button size="small" color="primary">
+                    Share
+                    </Button>
+                    <Button size="small" color="primary">
+                    Learn More
+                    </Button>
+                </CardActions>
+            </Card>)
+        ))}
 
-    return (
-        <>
-            <div>Not working yet?</div>
-            {props.tools && props.tools.map(tool => tool.value.map((tooly, ind) => <div key={ind}>{tooly.name}</div>))}
-        </>
-        
-    )
+    </>
+
+
+  );
 }
 
 const mapStateToProps = state => ({
@@ -31,4 +99,4 @@ const mapStateToProps = state => ({
     tools: state.tools
   });
   
-  export default withRouter(connect(mapStateToProps, { availableTools })(ToolList))
+export default withRouter(connect(mapStateToProps, { availableTools })(ToolList))
