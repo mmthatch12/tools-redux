@@ -70,10 +70,10 @@ const ToolList = (props) => {
                     />
                     <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        {tooly.name}
+                        Tool: {tooly.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {tooly.owner_id}
+                        Owner: {tooly.first_name} {tooly.last_name}
                     </Typography>
                     </CardContent>
                 </CardActionArea>
