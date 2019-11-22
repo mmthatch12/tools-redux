@@ -176,7 +176,7 @@ const useStyles = makeStyles(theme => ({
               <Grid item xs>
               </Grid>
               <Grid item>
-                <Link to='/'>
+                <Link href="/">
                   {"Already have an account? Sign In"}
                 </Link>
               </Grid>
