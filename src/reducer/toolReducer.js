@@ -22,6 +22,7 @@ const initialState = {
     tools: [],
     idOTools: [],
     addTData: [],
+    reqTData: [],
     btools: [],
     isLoading: false,
     error: ''
@@ -77,6 +78,18 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 idTools: [...state.idOTools, {value: action.payload}]
+            }
+        case GET_ID_TOOL_DATA_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            }
+        case GET_ID_TOOL_DATA_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                reqTData: [...state.reqTData, {value: action.payload}]
             }
         case POST_TOOL_DATA_START:
             return {

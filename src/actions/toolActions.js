@@ -13,6 +13,9 @@ export const GET_TOOL_DATA_FAILURE = 'GET_TOOL_DATA_FAILURE'
 export const GET_ID_TOOL_DATA_START = 'GET_ID_TOOL_DATA_START'
 export const GET_ID_TOOL_DATA_SUCCESS = 'GET_ID_TOOL_DATA_SUCCESS'
 export const GET_ID_TOOL_DATA_FAILURE = 'GET_ID_TOOL_DATA_FAILURE'
+export const GET_ID_REQ_TOOL_DATA_START = 'GET_ID_REQ_TOOL_DATA_START'
+export const GET_ID_REQ_TOOL_DATA_SUCCESS = 'GET_ID_REQ_TOOL_DATA_SUCCESS'
+export const GET_ID_REQ_TOOL_DATA_FAILURE = 'GET_ID_REQ_TOOL_DATA_FAILURE'
 export const POST_TOOL_DATA_START = 'Post_TOOL_DATA_START'
 export const POST_TOOL_DATA_SUCCESS = 'Post_TOOL_DATA_SUCCESS'
 export const POST_TOOL_DATA_FAILURE = 'Post_TOOL_DATA_FAILURE'
@@ -101,6 +104,24 @@ export const addTool = values => {
                 })
                 .catch(err => {
                     dispatch({ type: POST_TOOL_DATA_FAILURE, payload: err.response})
+                })
+    }
+}
+
+export const idReqTools = () => {
+    const id = localStorage.getItem('id')
+    return dispatch => {
+        dispatch({ type: GET_ID_REQ_TOOL_DATA_START })
+        return AxiosWithAuth()    
+            .get(`https://use-m-tools-be.herokuapp.com/tools/requested/${id}`)
+                .then(res => {
+                    console.log('id from idTools', id)
+                    console.log("res from idTools action", res)
+                    dispatch({ type: GET_ID_REQ_TOOL_DATA_SUCCESS, payload: res.data})
+                    return true;
+                })
+                .catch(err => {
+                    dispatch({ type: GET_ID_REQ_TOOL_DATA_FAILURE, payload: err.response})
                 })
     }
 }
