@@ -17,7 +17,7 @@ import { stat } from 'fs';
 const initialState = {
     loginData: [],
     tools: [],
-    idTools: [],
+    idOTools: [],
     btools: [],
     isLoading: false,
     error: ''
@@ -72,7 +72,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
-                idTools: [...state.idTools, {value: action.payload}]
+                idTools: [...state.idOTools, {value: action.payload}]
             }
         default:
             return state

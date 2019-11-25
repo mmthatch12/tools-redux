@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { idTools } from '../../actions/toolActions'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -23,15 +24,16 @@ const useStyles = makeStyles({
 const UserDash = (props) => {
   const classes = useStyles();
 
-    // useEffect(() => {
-    //     props.availableTools()
-    // }, [])
+    useEffect(() => {
+        props.idTools()
+    }, [])
 
   return (
     <>
         <Link to='/toollist'>Temporary link to ToolList</Link>
-        {props.tools && props.tools.map(tool => tool.value.map((tooly, ind) => (        
-            <Card className={classes.card} key={ind}>
+        {props.idOTools && props.idOTools.map(tool => tool.value.map((tooly, ind) => (        
+           <Card className={classes.card} key={ind}>
+               <div>Tools Owned by {tooly.first_name} {tooly.last_name}</div>
                 <CardActionArea>
                     <CardMedia
                     className={classes.media}
@@ -40,10 +42,10 @@ const UserDash = (props) => {
                     />
                     <CardContent>
                     <Typography gutterBottom variant="h5" component="h2">
-                        Tool: Practice
+                        Tool: {tooly.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Owner: Practice
+                        Owner: {tooly.first_name} {tooly.last_name}
                     </Typography>
                     </CardContent>
                 </CardActionArea>
@@ -66,7 +68,7 @@ const UserDash = (props) => {
 
 const mapStateToProps = state => ({
     isLoading: state.isLoading,
-    tools: state.tools
+    idOTools: state.idTools
   });
   
-export default withRouter(connect(mapStateToProps, {  })(UserDash))
+export default withRouter(connect(mapStateToProps, { idTools })(UserDash))
