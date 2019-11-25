@@ -7,13 +7,17 @@ import {
     REGISTER_FAILURE,
     GET_TOOL_DATA_START,
     GET_TOOL_DATA_SUCCESS,
-    GET_TOOL_DATA_FAILURE
+    GET_TOOL_DATA_FAILURE,
+    GET_ID_TOOL_DATA_START,
+    GET_ID_TOOL_DATA_SUCCESS,
+    GET_ID_TOOL_DATA_FAILURE
 } from '../actions'
 import { stat } from 'fs';
 
 const initialState = {
     loginData: [],
     tools: [],
+    idTools: [],
     btools: [],
     isLoading: false,
     error: ''
@@ -57,6 +61,18 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 tools: [...state.tools, {value: action.payload}]
+            }
+        case GET_ID_TOOL_DATA_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            }
+        case GET_ID_TOOL_DATA_SUCCESS:
+            return {
+                ...state,
+                isLoading: false,
+                idTools: [...state.idTools, {value: action.payload}]
             }
         default:
             return state
