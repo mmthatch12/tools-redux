@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { availableTools } from '../../actions/toolActions'
 
@@ -30,7 +30,9 @@ const ToolList = (props) => {
 
   return (
     <>
-        {props.tools && props.tools.map(tool => tool.value.map((tooly, ind) => (        
+      <Link to='/userdash'>Temporary link to UserDash</Link>
+        {props.tools && props.tools.map(tool => tool.value.map((tooly, ind) => (   
+
             <Card className={classes.card} key={ind}>
                 <CardActionArea>
                     <CardMedia

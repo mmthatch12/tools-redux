@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import { makeStyles } from '@material-ui/core/styles';
@@ -29,6 +29,7 @@ const UserDash = (props) => {
 
   return (
     <>
+        <Link to='/toollist'>Temporary link to ToolList</Link>
         {props.tools && props.tools.map(tool => tool.value.map((tooly, ind) => (        
             <Card className={classes.card} key={ind}>
                 <CardActionArea>
