@@ -38,7 +38,10 @@ const RequestedTools = (props) => {
                         Tool: {tooly.name}
                     </Typography>
                     <Typography variant="body2" color="textSecondary" component="p">
-                        Owner: {tooly.first_name} {tooly.last_name}
+                        Owner: {tooly.owner_id}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        Requested By: {tooly.requested_by}
                     </Typography>
                     </CardContent>
                 </CardActionArea>

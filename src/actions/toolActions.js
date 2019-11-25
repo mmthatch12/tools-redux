@@ -115,8 +115,7 @@ export const idReqTools = () => {
         return AxiosWithAuth()    
             .get(`https://use-m-tools-be.herokuapp.com/tools/requested/${id}`)
                 .then(res => {
-                    console.log('id from idTools', id)
-                    console.log("res from idTools action", res)
+                    console.log("res from idReqTools action", res)
                     dispatch({ type: GET_ID_REQ_TOOL_DATA_SUCCESS, payload: res.data})
                     return true;
                 })

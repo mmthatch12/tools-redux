@@ -11,6 +11,9 @@ import {
     GET_ID_TOOL_DATA_START,
     GET_ID_TOOL_DATA_SUCCESS,
     GET_ID_TOOL_DATA_FAILURE,
+    GET_ID_REQ_TOOL_DATA_START,
+    GET_ID_REQ_TOOL_DATA_SUCCESS,
+    GET_ID_REQ_TOOL_DATA_FAILURE,
     POST_TOOL_DATA_START,
     POST_TOOL_DATA_SUCCESS,
     POST_TOOL_DATA_FAILURE
@@ -79,13 +82,13 @@ export const reducer = (state = initialState, action) => {
                 isLoading: false,
                 idTools: [...state.idOTools, {value: action.payload}]
             }
-        case GET_ID_TOOL_DATA_START:
+        case GET_ID_REQ_TOOL_DATA_START:
             return {
                 ...state,
                 isLoading: true,
                 error: ''
             }
-        case GET_ID_TOOL_DATA_SUCCESS:
+        case GET_ID_REQ_TOOL_DATA_SUCCESS:
             return {
                 ...state,
                 isLoading: false,
