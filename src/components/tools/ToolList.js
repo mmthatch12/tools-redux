@@ -12,6 +12,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
+import NavToolList from '../navs/NavToolList'
+
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
@@ -30,6 +32,7 @@ const ToolList = (props) => {
 
   return (
     <>
+      <NavToolList />
       <Link to='/userdash'>Temporary link to UserDash</Link>
         {props.tools && props.tools.map(tool => tool.value.map((tooly, ind) => (   
 

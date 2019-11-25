@@ -33,7 +33,6 @@ const UserDash = (props) => {
         <Link to='/toollist'>Temporary link to ToolList</Link>
         {props.idOTools && props.idOTools.map(tool => tool.value.map((tooly, ind) => (        
            <Card className={classes.card} key={ind}>
-               <div>Tools Owned by {tooly.first_name} {tooly.last_name}</div>
                 <CardActionArea>
                     <CardMedia
                     className={classes.media}
