@@ -3,26 +3,9 @@ import { withRouter, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { idTools } from '../../actions/toolActions'
 
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
-import Typography from '@material-ui/core/Typography';
-
-const useStyles = makeStyles({
-  card: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
+import OwnedTools from './OwnedTools'
 
 const UserDash = (props) => {
-  const classes = useStyles();
 
     useEffect(() => {
         props.idTools()
@@ -31,34 +14,7 @@ const UserDash = (props) => {
   return (
     <>
         <Link to='/toollist'>Temporary link to ToolList</Link>
-        {props.idOTools && props.idOTools.map(tool => tool.value.map((tooly, ind) => (        
-           <Card className={classes.card} key={ind}>
-                <CardActionArea>
-                    <CardMedia
-                    className={classes.media}
-                    image="/static/images/cards/contemplative-reptile.jpg"
-                    title="Contemplative Reptile"
-                    />
-                    <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
-                        Tool: {tooly.name}
-                    </Typography>
-                    <Typography variant="body2" color="textSecondary" component="p">
-                        Owner: {tooly.first_name} {tooly.last_name}
-                    </Typography>
-                    </CardContent>
-                </CardActionArea>
-                <CardActions>
-                    <Button size="small" color="primary">
-                    Share
-                    </Button>
-                    <Button size="small" color="primary">
-                    Learn More
-                    </Button>
-                </CardActions>
-            </Card>)
-        ))}
-
+        <OwnedTools props={props.idOTools} />
     </>
 
 
