@@ -25,6 +25,7 @@ const RequestedTools = (props) => {
 
   return (
     <>
+        Tools other people have requested
         {props.props && props.props.map(tool => tool.value.map((tooly, ind) => (        
            <Card className={classes.card} key={ind}>
                 <CardActionArea>

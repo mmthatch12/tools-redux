@@ -25,6 +25,7 @@ const OwnedTools = (props) => {
 
   return (
     <>
+        Tools I own
         {props.props && props.props.map(tool => tool.value.map((tooly, ind) => (        
            <Card className={classes.card} key={ind}>
                 <CardActionArea>
@@ -44,10 +45,7 @@ const OwnedTools = (props) => {
                 </CardActionArea>
                 <CardActions>
                     <Button size="small" color="primary">
-                    Share
-                    </Button>
-                    <Button size="small" color="primary">
-                    Learn More
+                        Edit Tool
                     </Button>
                 </CardActions>
             </Card>)
