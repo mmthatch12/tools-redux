@@ -10,7 +10,10 @@ import {
     GET_TOOL_DATA_FAILURE,
     GET_ID_TOOL_DATA_START,
     GET_ID_TOOL_DATA_SUCCESS,
-    GET_ID_TOOL_DATA_FAILURE
+    GET_ID_TOOL_DATA_FAILURE,
+    POST_TOOL_DATA_START,
+    POST_TOOL_DATA_SUCCESS,
+    POST_TOOL_DATA_FAILURE
 } from '../actions'
 import { stat } from 'fs';
 
@@ -18,6 +21,7 @@ const initialState = {
     loginData: [],
     tools: [],
     idOTools: [],
+    addTData: [],
     btools: [],
     isLoading: false,
     error: ''
@@ -73,6 +77,18 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 idTools: [...state.idOTools, {value: action.payload}]
+            }
+        case POST_TOOL_DATA_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            }
+        case POST_TOOL_DATA_SUCCESS: 
+            return {
+                ...state,
+                isLoading: false,
+                addTData: [...state.addTData, {value: action.payload}]
             }
         default:
             return state

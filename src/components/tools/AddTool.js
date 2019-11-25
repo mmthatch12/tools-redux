@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { addTool } from '../../actions/toolActions'
 
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -34,34 +37,41 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const defaultStudent = {
-    student_name: '',
-    major: '',
-    user_id: ''
+    name: '',
+    borrowed: false,
+    owner_id: ''
 }
 
-const AddStudent = (props) => {
+const AddTool = (props) => {
     const classes = useStyles()
     const id = localStorage.getItem('id')
-    const [tool, setTool] = useState({...defaultStudent, user_id: id })
+    const [tool, setTool] = useState({...defaultStudent, owner_id: id })
 
     const handleSubmit = e => {
         e.preventDefault()
-
+        return props.addTool(tool)
+        .then(res => {
+          if(res) {
+            props.history.push('/toollist')
+          }
+        })
+        .catch(err => {
+          console.log('Add tool error', err)
+        })
       }
 
     const handleChange = e => {
         e.preventDefault()
-        setStudent({ ...student, [e.target.name]: e.target.value})
+        setTool({ ...tool, [e.target.name]: e.target.value})
     }
 
     return (
       <>
-        <EditProjectNav /> 
         <Container component="main" maxWidth="xs">
           <CssBaseline />
           <div className={classes.paper}>
             <Typography component="h1" variant="h5">
-              Add Student
+              Add Tool
             </Typography>
             <form className={classes.form} onSubmit={handleSubmit} noValidate>
               <Grid container spacing={2}>
@@ -70,27 +80,11 @@ const AddStudent = (props) => {
                     variant="outlined"
                     required
                     fullWidth
-                    id="student_name"
-                    name="student_name"
-                    placeholder='Student Name'
-                    value={student.student_name}
+                    id="name"
+                    name="name"
+                    placeholder='Tool Name'
+                    value={tool.name}
                     onChange={handleChange}
-                  />
-                </Grid>
-                <Grid className={classes.container} item xs={12}>
-                  <TextField
-                    variant="outlined"
-                    required
-                    fullWidth
-                    name="major"
-                    placeholder='Major'
-                    value={student.major}
-                    onChange={handleChange}
-                    id="major"
-                    className={classes.textField}
-                    InputLabelProps={{
-                      shrink: true,
-                    }}
                   />
                 </Grid>
               </Grid>
@@ -101,7 +95,7 @@ const AddStudent = (props) => {
                 color="primary"
                 className={classes.submit}
               >
-                Add Student
+                Add Tool
               </Button>
             </form>
           </div>
@@ -112,5 +106,8 @@ const AddStudent = (props) => {
     )
 }
 
-
-export default AddStudent
+const mapStateToProps = state => ({
+    isLoading: false
+  });
+  
+  export default withRouter(connect(mapStateToProps, { addTool })(AddTool))

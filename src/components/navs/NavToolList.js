@@ -20,6 +20,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 
+import AddTool from '../tools/AddTool'
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -133,7 +135,7 @@ export default function NavToolList() {
         <List>
           {['Add Tool', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
             <ListItem button key={text}>
-              <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
+              <ListItemIcon>{index % 2 === 0 ? <Link to='/addtool'><InboxIcon /></Link> : <MailIcon />}</ListItemIcon>
               <ListItemText primary={text} />
             </ListItem>
           ))}
