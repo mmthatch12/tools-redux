@@ -10,20 +10,7 @@ import Grid from '@material-ui/core/Grid';
 import OwnedTools from './OwnedTools'
 import RequestedTools from './RequestedTools'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    flexGrow: 1,
-  },
-  paper: {
-    padding: theme.spacing(1),
-    textAlign: 'center',
-    color: theme.palette.text.secondary,
-  },
-}));
-
 const UserDash = (props) => {
-  const classes = useStyles();
-
 
     useEffect(() => {
         props.idTools()
@@ -33,15 +20,11 @@ const UserDash = (props) => {
   return (
     <>
         <Link to='/toollist'>Temporary link to ToolList</Link>
-        <Grid container spacing={1}>
-        <Grid container item xs={12} spacing={20}>
-          <Grid item xs={4}>
-            <Paper className={classes.paper}>item</Paper>
+        <Grid container>
+          <Grid item sm>
+            <OwnedTools props={props.idOTools} />
           </Grid>
-        </Grid>
-        </Grid>
-        <Grid container spacing={1}>
-          <Grid container item xs={12} spacing={3}>
+          <Grid item sm>
             <RequestedTools props={props.reqTData} />
           </Grid>
         </Grid>
