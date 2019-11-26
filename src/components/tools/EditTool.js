@@ -36,16 +36,12 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const defaultStudent = {
-    name: '',
-    borrowed: false,
-    owner_id: ''
-}
+
 
 const EditTool = (props) => {
     const classes = useStyles()
     const id = localStorage.getItem('id')
-    const [tool, setTool] = useState({...defaultStudent, owner_id: id })
+    const [tool, setTool] = useState({ owner_id: id })
 
     const handleSubmit = e => {
         e.preventDefault()

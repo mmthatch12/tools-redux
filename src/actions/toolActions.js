@@ -132,7 +132,7 @@ export const editTool = values => {
     return dispatch => {
         dispatch({ type: PUT_TOOL_DATA_START })
         return AxiosWithAuth()    
-            .post(`https://use-m-tools-be.herokuapp.com/tools/addtool`, values)
+            .post(`https://use-m-tools-be.herokuapp.com/tools/edittool/${values.id}`, values)
                 .then(res => {
                     console.log("res from addTool", res.data)
                     dispatch({ type: PUT_TOOL_DATA_SUCCESS, payload: res.data})
