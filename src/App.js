@@ -7,6 +7,7 @@ import Register from './components/users/Register'
 import ToolList from './components/tools/ToolList'
 import UserDash from './components/tools/UserDash'
 import AddTool from './components/tools/AddTool'
+import EditTool from './components/tools/EditTool'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Route exact path='/toollist' component={ToolList} />
       <Route exact path='/userdash' component={UserDash} />
       <Route exact path='/addtool' component={AddTool} />
+      <Route exact path='/edittool/:toolid' component={EditTool} />
     </>
   );
 }
