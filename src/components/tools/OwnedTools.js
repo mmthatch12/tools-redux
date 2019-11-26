@@ -45,9 +45,7 @@ const OwnedTools = (props) => {
                     </CardContent>
                 </CardActionArea>
                 <CardActions>
-                    <Button size="small" color="primary">
-                        Edit Tool
-                    </Button>
+                    <Button size="small" color="primary"><Link to={`/edittool/${tooly.id}`}>Edit Tool</Link></Button>
                 </CardActions>
             </Card>)
         ))}

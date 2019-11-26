@@ -5,6 +5,7 @@ export {
     idTools,
     addTool,
     idReqTools,
+    editTool,
     LOGIN_START,
     LOGIN_SUCCESS,
     LOGIN_FAILURE,
@@ -22,5 +23,8 @@ export {
     GET_ID_REQ_TOOL_DATA_FAILURE,
     POST_TOOL_DATA_START,
     POST_TOOL_DATA_SUCCESS,
-    POST_TOOL_DATA_FAILURE
+    POST_TOOL_DATA_FAILURE,
+    PUT_TOOL_DATA_START,
+    PUT_TOOL_DATA_SUCCESS,
+    PUT_TOOL_DATA_FAILURE
 } from './toolActions'
