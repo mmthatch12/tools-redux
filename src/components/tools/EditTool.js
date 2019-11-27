@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { addTool } from '../../actions/toolActions'
+import { editTool } from '../../actions/toolActions'
 
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -36,16 +36,14 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-
-
 const EditTool = (props) => {
     const classes = useStyles()
     const id = localStorage.getItem('id')
-    const [tool, setTool] = useState({ owner_id: id })
+    const [tool, setTool] = useState({ name: '', owner_id: id })
 
     const handleSubmit = e => {
         e.preventDefault()
-        return props.addTool(tool)
+        return props.editTool(tool)
         .then(res => {
           if(res) {
             props.history.push('/toollist')
@@ -91,7 +89,7 @@ const EditTool = (props) => {
                 color="primary"
                 className={classes.submit}
               >
-                Add Tool
+                 Tool
               </Button>
             </form>
           </div>
@@ -103,7 +101,8 @@ const EditTool = (props) => {
 }
 
 const mapStateToProps = state => ({
-    isLoading: false
+    isLoading: false,
+    editTools: state.editTools
   });
   
-  export default withRouter(connect(mapStateToProps, { addTool })(EditTool))
+  export default withRouter(connect(mapStateToProps, { editTool })(EditTool))

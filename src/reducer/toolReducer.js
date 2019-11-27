@@ -30,6 +30,7 @@ const initialState = {
     addTData: [],
     reqTData: [],
     btools: [],
+    editTools: [],
     isLoading: false,
     error: ''
 }
@@ -108,6 +109,18 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 isLoading: false,
                 addTData: [...state.addTData, {value: action.payload}]
+            }
+        case PUT_TOOL_DATA_START:
+            return {
+                ...state,
+                isLoading: true,
+                error: ''
+            }
+        case PUT_TOOL_DATA_SUCCESS: 
+            return {
+                ...state,
+                isLoading: false,
+                editTools: [...state.editTools, {value: action.payload}]
             }
         default:
             return state
